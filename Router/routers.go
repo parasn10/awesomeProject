@@ -1,6 +1,7 @@
 package Router
 
 import (
+	"awesomeProject/controllers"
 	"github.com/gorilla/mux"
 )
 
@@ -8,11 +9,11 @@ func Router() *mux.Router {
 	r := mux.NewRouter()
 
 	// routing
-	r.HandleFunc("/", serveHome).Methods("GET")
-	r.HandleFunc("/courses", getAllCourses).Methods("GET")
-	r.HandleFunc("/course/{id}", getCourseById).Methods("GET")
-	r.HandleFunc("/course/{id}", deleteCourse).Methods("DELETE")
-	r.HandleFunc("/course/{id}", updateCourse).Methods("PUT")
-	r.HandleFunc("/course", addCourse).Methods("POST")
-	return router
+	r.HandleFunc("/", controllers.ServeHome).Methods("GET")
+	r.HandleFunc("/courses", controllers.GetAllCourses).Methods("GET")
+	r.HandleFunc("/course/{id}", controllers.GetCourseById).Methods("GET")
+	r.HandleFunc("/course/{id}", controllers.DeleteCourse).Methods("DELETE")
+	r.HandleFunc("/course/{id}", controllers.UpdateCourse).Methods("PUT")
+	r.HandleFunc("/course", controllers.AddCourse).Methods("POST")
+	return r
 }
